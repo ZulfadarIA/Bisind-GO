@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "368885818051",
+    "project_id": "bisind-go",
+    "storage_bucket": "bisind-go.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368885818051:android:91ab36ce8c704871f67876",
+        "android_client_info": {
+          "package_name": "com.dicoding.projecttapenerjemahbahasaisyaratindonesia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkVh48Z4AE0GS0e4WAouygjwkPqUgT0x8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368885818051:android:0f6d54ed162ccdf6f67876",
+        "android_client_info": {
+          "package_name": "com.zulfadar.bisindgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkVh48Z4AE0GS0e4WAouygjwkPqUgT0x8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

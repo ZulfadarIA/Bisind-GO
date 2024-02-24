@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">Bisind-GO</string>
+    <string name="app_version">Version 1.0</string>
+    <string name="nama">Nama</string>
+    <string name="email">email</string>
+    <string name="password">Password</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="button_login">Masuk</string>
+    <string name="button_register">Daftar</string>
+    <string name="button_logout">Log Out</string>
+    <string name="welcome">Selamat Datang di</string>
+    <string name="phone_number">Nomor Telepon (08xxxxxxxxxx)</string>
+    <string name="app_title">Bisind-GO</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="masuk_sekarang">masuk sekarang! </string>
+    <string name="daftar_sekarang">daftar sekarang! </string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dictionary">Kamus</string>
+    <string name="title_profile">Profil</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="profile_username">Username</string>
+    <string name="user_name">Nama :</string>
+    <string name="no_telp">Nomor Telepon :</string>
+    <string name="gender">Jenis Kelamin :</string>
+    <string name="translate">Terjemahan</string>
+
+    <!--    data kosakata-->
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
+    <string name="f">F</string>
+    <string name="g">G</string>
+    <string name="h">H</string>
+    <string name="i">I</string>
+    <string name="j">J</string>
+    <string name="k">K</string>
+    <string name="l">L</string>
+    <string name="m">M</string>
+    <string name="n">N</string>
+    <string name="o">O</string>
+    <string name="p">P</string>
+    <string name="q">Q</string>
+    <string name="r">R</string>
+    <string name="s">S</string>
+    <string name="t">T</string>
+    <string name="u">U</string>
+    <string name="v">V</string>
+    <string name="w">W</string>
+    <string name="x">X</string>
+    <string name="y">Y</string>
+    <string name="z">Z</string>
+    <string name="first_name">nama depan</string>
+    <string name="last_name">Nama Belakang</string>
+
+    <string-array name="data_kosakata">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <integer-array name="data_photo_">
+        <item>@drawable/a</item>
+        <item>@drawable/b</item>
+        <item>@drawable/c</item>
+        <item>@drawable/d</item>
+        <item>@drawable/e</item>
+        <item>@drawable/f</item>
+        <item>@drawable/g</item>
+        <item>@drawable/h</item>
+        <item>@drawable/i</item>
+        <item>@drawable/j</item>
+        <item>@drawable/k</item>
+        <item>@drawable/l</item>
+        <item>@drawable/m</item>
+        <item>@drawable/n</item>
+        <item>@drawable/o</item>
+        <item>@drawable/p</item>
+        <item>@drawable/q</item>
+        <item>@drawable/r</item>
+        <item>@drawable/s</item>
+        <item>@drawable/t</item>
+        <item>@drawable/u</item>
+        <item>@drawable/v</item>
+        <item>@drawable/w</item>
+        <item>@drawable/x</item>
+        <item>@drawable/y</item>
+        <item>@drawable/z</item>
+    </integer-array>
+</resources>
