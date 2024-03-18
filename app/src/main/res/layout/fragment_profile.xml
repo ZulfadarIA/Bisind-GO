@@ -53,7 +53,7 @@
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/blankimage" />
+                    android:src="@drawable/blankimage" />
 
                 <TextView
                     android:id="@+id/tv_item_name"
@@ -110,16 +110,17 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/outline_person_24" />
+            android:src="@drawable/outline_person_24" />
 
         <TextView
+            android:id="@+id/tv_fullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:layout_marginRight="90dp"
             android:text="Nama Lengkap"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintLeft_toRightOf="@id/name_icon"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userprofile_card" />
@@ -135,7 +136,7 @@
             app:layout_constraintVertical_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/name_icon"
-            tools:src="@drawable/outline_phone_android_24" />
+            android:src="@drawable/outline_phone_android_24" />
 
         <TextView
             android:id="@+id/tv_phone"
@@ -162,7 +163,7 @@
             app:layout_constraintVertical_bias="0.01"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/name_icon"
-            tools:src="@drawable/outline_email_24" />
+            android:src="@drawable/outline_email_24" />
 
         <TextView
             android:id="@+id/tv_email"
@@ -179,6 +180,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_phone" />
 
         <Button
+            android:id="@+id/btn_logout"
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"

@@ -3,17 +3,28 @@ package com.zulfadar.bisindgo.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.dicoding.projecttapenerjemahbahasaisyaratindonesia.R
 import com.dicoding.projecttapenerjemahbahasaisyaratindonesia.databinding.ActivityLoginBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.zulfadar.bisindgo.MainActivity
+import com.zulfadar.bisindgo.ui.dialog.setupBottomSheetDialog
 import com.zulfadar.bisindgo.ui.register.RegisterActivity
+import com.zulfadar.bisindgo.ui.register.TAG
+import com.zulfadar.bisindgo.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityLoginBinding
+    private lateinit var binding : ActivityLoginBinding
+    private val viewModel by viewModels<LoginViewModel>()
     lateinit var userAuth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,55 +36,62 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        binding.apply {
+            loginBtn.setOnClickListener {
+                val email = edtEmailLogin.text.toString().trim()
+                val password = edtPasswordLogin.text.toString()
+                viewModel.login(email, password)
+            }
+        }
+
         binding.toregisterPage.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
 
-        binding.loginBtn.setOnClickListener {
-            val email = binding.edtEmailLogin.text.toString()
-            val password = binding.edtPasswordLogin.text.toString()
-
-            //validasi email
-            if (email.isEmpty()) {
-                binding.edtEmailLogin.error = "Email tidak boleh kosong!"
-                binding.edtEmailLogin.requestFocus()
-                return@setOnClickListener
+        binding.forgotPassword.setOnClickListener {
+            setupBottomSheetDialog { email ->
+                viewModel.resetPassword(email)
             }
-
-            //validasi email tidak sesuai
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                binding.edtEmailLogin.error = "Email tidak valid"
-                binding.edtEmailLogin.requestFocus()
-                return@setOnClickListener
-            }
-
-            //validasi password
-            if (password.isEmpty()) {
-                binding.edtPasswordLogin.error = "Password harus diisi!"
-                binding.edtPasswordLogin.requestFocus()
-                return@setOnClickListener
-            }
-
-            //validasi panjang password
-            if (password.length < 8) {
-                binding.edtPasswordLogin.error = "Password minmal 8 karakter!"
-                binding.edtPasswordLogin.requestFocus()
-                return@setOnClickListener
-            }
-
-            LoginFirebase(email, password)
         }
-    }
 
-    private fun LoginFirebase(email: String, password: String) {
-        userAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){
-            if (it.isSuccessful) {
-                Toast.makeText(this, "Berhasil login, Selamat Datang $email", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launchWhenCreated {
+            viewModel.resetPassword.collect {
+                when(it) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        Snackbar.make(binding.root, "Tautan reset passwird sudah dikirim ke email Anda", Snackbar.LENGTH_LONG).show()
+                    }
+                    is Resource.Error -> {
+                        Snackbar.make(binding.root, "Error: ${it.message}", Snackbar.LENGTH_LONG).show()
+                    }
+                    else -> Unit
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.login.collect {
+                when(it) {
+                    is Resource.Loading -> {
+                        binding.loginBtn.startAnimation()
+                    }
+                    is Resource.Success -> {
+                        binding.loginBtn.revertAnimation()
+                        // Intent ke MainActivity dengan fragment
+                        Intent(this@LoginActivity, MainActivity::class.java).also { intent ->
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                        }
+                    }
+                    is Resource.Error -> {
+                        Log.d(TAG, it.message.toString())
+                        Toast.makeText(this@LoginActivity, "Terjadi kesalahan: ${it.message}", Toast.LENGTH_LONG).show()
+                        binding.loginBtn.revertAnimation()
+                    }
+                    else -> Unit
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.google.gms:google-services:4.4.0")
+        classpath("com.google.gms:google-services:4.4.1")
         classpath ("com.android.tools.build:gradle:4.1.0") // Ganti dengan versi yang terbaru
         classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0") // Ganti dengan versi yang terbaru
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.48.1")
