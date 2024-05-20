@@ -8,5 +8,7 @@ data class User(
     val telpNumb: String,
     var imagePath: String = ""
 ) {
-    constructor(trim: String, trim1: String, trim2: String) : this("", "", "", "", "")
+    constructor() : this("", "", "", "", "")
+
+    constructor(firstName: String, lastName: String, email: String, telpNumb: String) : this(firstName, lastName, email, telpNumb, "")
 }

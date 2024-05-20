@@ -55,8 +55,14 @@
     <string name="x">X</string>
     <string name="y">Y</string>
     <string name="z">Z</string>
-    <string name="first_name">nama depan</string>
+    <string name="first_name">Nama Depan</string>
     <string name="last_name">Nama Belakang</string>
+    <string name="forgot_password">Lupa Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="tv_reset_password_to_email">Kami akan mengirim tautan reset password ke email anda</string>
+    <string name="tv_edit_profile">Edit Profile</string>
+    <string name="noTelp">08XXXXXXXXXX</string>
+    <string name="save_profile_btn">Simpan</string>
 
     <string-array name="data_kosakata">
         <item>A</item>
