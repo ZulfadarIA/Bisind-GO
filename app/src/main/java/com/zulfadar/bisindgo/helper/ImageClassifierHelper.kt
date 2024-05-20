@@ -16,7 +16,7 @@ import java.lang.IllegalStateException
 
 class ImageClassifierHelper(
     var threshold: Float = 0.1f,
-    var maxResult: Int = 3,
+    var maxResults: Int = 3,
     var numThreads: Int = 4,
     val modelName: String = "bisindo_best_modelv6_2_metadata3.tflite",
     val context: Context,
@@ -28,14 +28,12 @@ class ImageClassifierHelper(
         setupImageClassifier()
     }
 
-    private fun setupImageClassifier() {
+    fun setupImageClassifier() {
         val optionsBuilder = ImageClassifier.ImageClassifierOptions.builder()
             .setScoreThreshold(threshold)
-            .setMaxResults(maxResult)
-
+            .setMaxResults(maxResults)
         val baseOptionsBuilder = BaseOptions.builder().setNumThreads(numThreads)
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
-
         try {
             imageClassifier =
                 ImageClassifier.createFromFileAndOptions(context, modelName, optionsBuilder.build())
@@ -74,7 +72,6 @@ class ImageClassifierHelper(
             inferenceTime
         )
     }
-
     private fun getOrientationFromRotation(rotation: Int): ImageProcessingOptions.Orientation {
         return when (rotation) {
             Surface.ROTATION_270 -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
@@ -83,7 +80,6 @@ class ImageClassifierHelper(
             else -> ImageProcessingOptions.Orientation.RIGHT_TOP
         }
     }
-
     interface ClassifierListener {
         fun onError(error: String)
         fun onResults(
